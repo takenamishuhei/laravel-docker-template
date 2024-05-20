@@ -1,8 +1,15 @@
 @extends('layouts.base')
 @section('content')
 <div class="row justify-content-center">
-<div class="col-auto">
+  <div class="col-auto">
     <a href="{{ route('todo.edit', $todo->id) }}" class="btn btn-info">編集する</a>
+  </div>
+  <div class="col-auto">
+    <form method="POST" action="{{ route('todo.delete', $todo->id) }}">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">削除する</button>
+    </form>
   </div>
   <div class="col-md-8">
     <div class="card">
